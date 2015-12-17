@@ -1,0 +1,38 @@
+
+<div class="row m-t-1">
+	<div class="col-xs-12 col-md-4">
+		<div class="card">
+			<h3 class="card-header text-xs-center">شماره ها</h3>
+			<div class="card-block">
+				<form novalidate class="" ng-submit="vm.message.addTel(vm.tel); vm.tel = null">
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="vm.tel">
+						<!-- <button type="submit" class="btn btn-secondary">اضافه</button> -->
+					</div>
+				</form>
+			</div>
+			<ul class="list-group list-group-flush">
+    		<li class="list-group-item ltr text-xs-left " ng-repeat="tel in vm.message.tels" >
+					{{tel}}
+					<span confirm-x-btn click-func="vm.message.removeTel(tel)"></span>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+	<div class="col-xs-12 col-md-8">
+		<div class="card">
+			<div class="card-block">
+				<form novalidate name="form" ng-submit="vm.message.sendMessage()">
+					<fieldset class="form-group">
+						<textarea rows="6" ng-model="vm.message.text" class="form-control" required></textarea>
+					</fieldset>
+
+					<button class="btn btn-block btn-primary" ng-disabled="form.$invalid || !vm.message.tels.length">ارسال</button>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

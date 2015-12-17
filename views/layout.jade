@@ -1,0 +1,25 @@
+doctype html
+html(ng-app="myApp")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(http-equiv="x-ua-compatible", content="ie=edge")
+    title= title
+    each file in assets.main.css
+      link(rel='stylesheet', href= file)
+  body
+    .container
+      nav.navbar.navbar-light.bg-faded
+        .navbar-brand سالار
+        ul.nav.navbar-nav
+          li.nav-item
+            a.nav-link(ui-sref='contacts', ui-sref-active="active") مشتریان
+          li.nav-item
+            a.nav-link(ui-sref='messages', ui-sref-active="active") پیغام
+
+      block content
+  
+
+    each file in assets.main.js
+      script(src= file)
+

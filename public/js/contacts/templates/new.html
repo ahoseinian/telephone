@@ -1,0 +1,35 @@
+<div class="card" ng-class="{'card-info': vm.contact._id}" >
+	<div class="card-block">
+		<h4 class="text-center card-title">{{vm.contact._id ? "Edit": "New"}} {{vm.contact.contactname}}</h4>
+	</div>
+	<form ng-submit="vm.add()" novalidate name="form">
+		<div class="card-block">
+			<fieldset class="form-group">
+				<input class="form-control" placeholder="نام" ng-model="vm.contact.name" required>
+			</fieldset>
+
+			<fieldset class="form-group">
+				<textarea class="form-control" placeholder="آدرس" rows="3" ng-model="vm.contact.address" required></textarea>
+			</fieldset>
+
+			<fieldset class="form-group">
+				<input type="email" class="form-control" placeholder="ایمیل" ng-model="vm.contact.email" required>
+			</fieldset>
+
+			<fieldset class="form-group">
+				<textarea class="form-control" placeholder="اطلاعات" rows="3" ng-model="vm.contact.info" required></textarea>
+			</fieldset>
+
+		</div>
+		<div class="card-footer">
+			<div class="row">
+				<div class="col-xs-6">
+					<button type="submit" class="btn btn-primary btn-sm btn-block" ng-disabled="form.$invalid">ذخیره</button>
+				</div>
+				<div class="col-xs-6">
+					<a ui-sref="contacts" class="btn btn-sm btn-secondary btn-block"> انصراف </a>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

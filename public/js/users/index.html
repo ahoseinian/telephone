@@ -1,0 +1,33 @@
+<h2>users</h2>
+<form class="form-inline m-y-1" ng-submit="vm.service.save()" name="form" novalidate autocomplete="off">
+  <fieldset class="form-group">
+    <input type="text" ng-model="vm.service.current.username" class="form-control" placeholder="نام کاربری" required>
+  </fieldset>
+  <fieldset class="form-group m-r-1">
+    <input type="password" ng-model="vm.service.current.password" class="form-control" required placeholder="رمز عبور">
+    <input type="password" ng-model="pass2" class="form-control" required placeholder="تکرار رمز عبور">
+  </fieldset>
+  <fieldset class="form-group m-x-1">
+  	<label for="">ادمین</label>
+  	<input class="m-t-1" type="checkbox" ng-model="vm.service.current.admin" >
+  </fieldset>
+  <button class="btn btn-primary" ng-disabled="form.$invalid || vm.service.current.password !== pass2">ذخیره</button>
+</form>
+<table class="table">
+  <thead>
+    <tr>
+      <th>نام کاربری</th>
+      <th>نام</th>
+      <th>ادمین</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="usr in vm.service.items">
+      <td>{{usr.username}}</td>
+      <td>{{usr.fullname}}</td>
+      <td>
+        <span ng-if="usr.admin">ادمین</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,18 @@
+<table class="table">
+	<tbody>
+		<tr ng-repeat="msg in vm.mServ.messages">
+			<td>{{msg.messageid}}</td>
+			<td>{{msg.cost}}</td>
+			<td>{{msg.message}}</td>
+			<td>{{msg.messageid}}</td>
+			<td>{{msg.receptor}}</td>
+			<td>{{msg.sender}}</td>
+			<td>{{msg.status}}</td>
+			<td>{{msg.statustext}}</td>
+			<td>{{msg.messageid}}</td>
+			<td>
+				<button class="btn btn-sm btn-primary" ng-click="vm.mServ.check(msg)">check</button>
+			</td>
+		</tr>
+	</tbody>
+</table>

@@ -36,7 +36,9 @@
 				if (!search) {
 	        return $sce.trustAsHtml(text);
 	    	}
-	    	return $sce.trustAsHtml(text.replace(new RegExp(search, 'gi'), '<mark>$&</mark>'));
+	    	if(text){
+	    		return $sce.trustAsHtml(text.replace(new RegExp(search, 'gi'), '<mark>$&</mark>'));
+	    	}
 			}
 		}
 })();

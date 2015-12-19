@@ -1,19 +1,22 @@
-html{
+html {
   font-size: 12px;
 }
+
 @font-face {
   font-family: yekan-web;
   src: url(/fonts/YekanWeb-Regular.woff);
 }
-body{
-	font-family: yekan-web, tahoma;
+
+body {
+  font-family: yekan-web, tahoma;
 }
+
 .form-control {
   padding: .1rem .75rem;
   line-height: 2;
 }
 
-.absolute-left{
+.absolute-left {
   position: absolute;
   left: -5px;
 }
@@ -24,11 +27,11 @@ body{
   column-count: 4;
 }
 
-.card img{
-	width: 100%;
+.card img {
+  width: 100%;
 }
 
-.card-bottom{
+.card-bottom {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -38,36 +41,73 @@ body{
   padding: .25rem 1.25rem;
 }
 
-.product-box{
+.product-box {
   height: 500px;
   overflow: overlay;
 }
 
-.purchase-form fieldset.form-group{
-  height: 35px; 
+.purchase-form fieldset.form-group {
+  height: 35px;
 }
 
-.close-danger, .close-danger:hover{
+.close-danger,
+.close-danger:hover {
   opacity: 1;
   color: #D9534F;
 }
 
-.search-form input{
+.search-form input {
   width: 200px;
   display: inline-block;
   position: relative;
-  top: -35px;
-  left: 30px;
+  top: -46px;
+  left: 20px;
 }
-.search-form{
+
+.search-form {
   text-align: left;
-
 }
 
-.hover-big{
-  transition: all 0.1s ;
+.hover-big {
+  transition: all 0.1s;
 }
-.hover-big:hover{
+
+.hover-big:hover {
   font-size: 2rem;
   cursor: pointer;
+}
+
+.login-card{
+  width: 222px;
+  margin-top: 10%;
+  background: #007DC5;
+  color: white;
+  /*box-shadow: 0px 0px 2px 1px rgba(255,110,255,1);*/
+  box-shadow: 0px 0px 2px 1px rgba(148,0,148,1);
+  box-shadow: 0px 0px 2px 1px rgba(71,166,217,1);
+  box-shadow: 0px 0px 1px 1px rgba(40,50,138,1);
+  border: none;
+}
+.login-card header{
+  height: 37px;
+  background: url('/images/login-header.png');
+  background-size: cover;
+  width: 224px;
+  position: relative;
+  top:-3px;
+  right: -1px;
+}
+.login-card div, .login-card li{
+  background-color: inherit;
+}
+.login-card .login-btn{
+  background-color: #0073BD;
+}
+.login-card .login-btn button{
+  background: url('/images/login.png');
+  background-size: cover;
+  height: 38px;
+  width: 237px;
+  border:none;
+  margin: 20px -8px 10px;
 }

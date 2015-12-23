@@ -24,4 +24,76 @@
       </div>
     </form>
   </div>
+  <div class="card panel-card center-block" ui-view ng-if="user">
+    <div class="card-header text-xs-center">
+      <h3>{{vm.title}}</h3>
+    </div>
+    <ul>
+      <section>
+        <li class="disabled">
+          <a href="#"></a>
+        </li>
+        <li class="disabled">
+          <a href="#"></a>
+        </li>
+        <li class="disabled">
+          <a href="#"></a>
+        </li>
+        <li class="disabled">
+          <a href="#"></a>
+        </li>
+        <li class="disabled">
+          <a href="#"></a>
+        </li>
+        <li class="disabled">
+          <a href="#"></a>
+        </li>
+        <li class="disabled">
+          <a href="#"></a>
+        </li>
+        <li class="disabled">
+          <a href="#"></a>
+        </li>
+        <li class="disabled">
+          <a href="#"></a>
+        </li>
+        <li class="disabled">
+          <a href="#"></a>
+        </li>
+        <li>
+          <a href="/tel#/contacts" ng-mouseover="vm.title='دفترچه تلفن'" ng-mouseleave="vm.resetTitle()"></a>
+        </li>
+        <li class="disabled">
+          <a href="#"></a>
+        </li>
+      </section>
+      <hr>
+      <footer>
+        <li class="disabled">
+          <a href="#"></a>
+        </li>
+        <li class="disabled">
+          <a href="#"></a>
+        </li>
+        <li class="disabled">
+          <a href="#"></a>
+        </li>
+        <li class="disabled">
+          <a href="#"></a>
+        </li>
+        <li ng-mouseover="vm.title='کاربران'" ng-mouseleave="vm.resetTitle()">
+          <a ui-sref="users"></a>
+        </li>
+        <li ng-mouseover="vm.title='امنیت و سطح دسترسی'" ng-mouseleave="vm.resetTitle()">
+          <a href="#"></a>
+        </li>
+        <li class="disabled">
+          <a href="#"></a>
+        </li>
+        <li class="disabled">
+          <a href="#"></a>
+        </li>
+      </footer>
+    </ul>
+  </div>
 </div>

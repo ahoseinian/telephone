@@ -12,8 +12,8 @@
     var ftry = {
       items: [],
       current: {},
-      query,
-      save,
+      query: query,
+      save: save,
     }
 
     return ftry;

@@ -6,10 +6,18 @@ router.use('/api/contacts', isLoggedIn, require('./contacts'));
 router.use('/api/messages', isLoggedIn, require('./messages'));
 router.use('/api/users', require('./users'));
 /* GET home page. */
-router.get('/', function(req, res, next) {
-	if(req.user) res.render('tel', { user: req.user});
-	else res.render('index', { ip: req.ip.replace(/f|:/g, '') });
+router.get('/', function (req, res, next) {
+  res.render('index', {
+    ip: req.ip.replace(/f|:/g, ''),
+    user: req.user
+  });
 });
+
+router.get('/tel', function (req, res, next) {
+	res.render('tel',{
+    user: req.user
+	})
+})
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();

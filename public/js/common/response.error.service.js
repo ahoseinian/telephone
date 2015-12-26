@@ -17,7 +17,7 @@
         toastr.error("آیتم مورد نظر وجود دارد");
       } else if (response.status == 403) {
         toastr.error("باید login koni");
-        window.parent.location.hash = '#/';
+        window.location= '/';
       } else if (response.status == 400) {
         toastr.error("اطلاعات وارد شده صحیح نمیباشند یا قبلا وارد شده اند");
       } else {

@@ -9,6 +9,12 @@
   	function UsersController(userService){
   		var vm = this;
   		vm.service = userService;
+      vm.removeUser = removeUser;
   		userService.query();
+
+
+      function removeUser(id){
+        userService.remove(id); 
+      }
   	}
 })();

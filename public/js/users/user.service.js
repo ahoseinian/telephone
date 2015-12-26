@@ -14,6 +14,7 @@
       current: {},
       query: query,
       save: save,
+      remove: remove,
     }
 
     return ftry;
@@ -25,17 +26,21 @@
     }
 
     function save() {
-      if (ftry.current._id) update(ftry.current);
-      else insert(ftry.current);
-    }
-
-
-    //private methods
-
-    function insert(itm) {
-      $http.post(BASE_URL, itm).success(function (res) {
-        ftry.items.push(res);
+      $http.post(BASE_URL, ftry.current).success(function (res) {
+        if (ftry.current._id) {
+          ftry.current = {};
+        } else {
+          ftry.items.push(res);
+        }
       })
     }
+
+
+    function remove(id) {
+      $http.delete(BASE_URL + id).success(function (res) {
+        ftry.query();
+      })
+    }
+
   }
 })();

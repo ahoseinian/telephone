@@ -2,18 +2,18 @@ var express = require('express');
 var router = express.Router();
 var Contact = require('../models/contact');
 
-router.get('/search/:query?', function (req, res, next) {
-  var qry = req.params.query;
+router.get('/search', function (req, res, next) {
+  var qry = req.query;
   Contact
     .find({
       $or:[
-        { name:         { $regex: '.*'+ qry +'.*' } }, 
-        { company:      { $regex: '.*'+ qry +'.*' } }, 
-        { 'phones.num': { $regex: '.*'+ qry +'.*' } }, 
-        { address:      { $regex: '.*'+ qry +'.*' } }, 
-        { email:        { $regex: '.*'+ qry +'.*' } }, 
-        { info:         { $regex: '.*'+ qry +'.*' } }, 
-        { tavalod:      { $regex: '.*'+ qry +'.*' } }, 
+        { name:         { $regex: '.*'+ qry.q +'.*' } }, 
+        { company:      { $regex: '.*'+ qry.q +'.*' } }, 
+        { 'phones.num': { $regex: '.*'+ qry.q +'.*' } }, 
+        { address:      { $regex: '.*'+ qry.q +'.*' } }, 
+        { email:        { $regex: '.*'+ qry.q +'.*' } }, 
+        { info:         { $regex: '.*'+ qry.q +'.*' } }, 
+        { tavalod:      { $regex: '.*'+ qry.q +'.*' } }, 
       ]
     }) 
     .limit(40) 

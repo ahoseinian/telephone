@@ -9,6 +9,7 @@ var assetsManager = require('./config/assets');
 var passport = require('passport');
 var session = require('express-session');
 var mongoose = require('mongoose');
+const MongoStore = require('connect-mongo')(session);
 mongoose.connect('mongodb://localhost/telephone');
 
 
@@ -21,7 +22,8 @@ app.use(assetsManager.middleWare);
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 app.use(passport.initialize());
 app.use(passport.session());

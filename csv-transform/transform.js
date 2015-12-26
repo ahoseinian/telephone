@@ -13,7 +13,7 @@ var Contact = require('../models/contact');
 db.parallelize(function() {
 	
 
-	db.each("SELECT * FROM contacts", function(err, row) {
+	db.each("SELECT * FROM contacts LIMIT 1000, 1000", function(err, row) {
 		var myRow = {};
 		myRow.name = row.name;
 		myRow.company = row.company;

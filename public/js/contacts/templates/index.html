@@ -1,65 +1,37 @@
-<button class="btn btn-primary absolute-left btn-sm" ui-sref="contacts.new({id: null})">new</button>
-<div>
-  <form class="search-form" name="searchForm" novalidate>
-    <input type="text" class="form-control" ng-model="vm.query" placeholder="جستجو" ng-change="vm.search(vm.query)">
-  </form>
+<div class="hidden-print">
+
+  <button class="btn btn-primary absolute-left btn-sm" ui-sref="contacts.new({id: null})">new</button>
+  <div>
+    <form class="search-form" name="searchForm" novalidate>
+      <input type="text" class="form-control" ng-model="vm.query" placeholder="جستجو" ng-change="vm.search(vm.query)">
+    </form>
+  </div>
 </div>
 
 <div class="row">
-  <div class="col-xs-1">
-
+  <div class="col-xs-1 hidden-print">
     <ul class="letter-list">
-      <li ng-repeat="letter in vm.letters" ng-click="vm.search(letter, true)" class="text-primary hover-pointer">
-      	<span>{{letter}}</span>
-    	</li>
+      <li ng-repeat="letter in vm.letters" ng-click="vm.search(letter, true)" class="hover-pointer">
+        <strong>{{letter}}</strong>
+      </li>
     </ul>
   </div>
   <div class="col-xs-11">
 
-    <div class="card-columns">
-      <div ui-view></div>
-      <div class="card " ng-repeat="contact in vm.contacts">
-        <div class="card-block">
-          <h4 class="card-title text-center" ng-bind-html="vm.highlight(contact.name, vm.query)"></h4>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item ltr text-xs-left" ng-repeat="phone in contact.phones">
-            <span class="fa fa-{{phone.mode}}" style="width:15px"></span>
-            <span class="hover-big" ng-bind-html="vm.highlight(phone.num, vm.query)" ng-click="vm.message.addTel(phone.num)"></span>
-            <span confirm-x-btn click-func="vm.removeTel(contact, phone)" ng-if="user.admin"></span>
-          </li>
-        </ul>
-        <div class="card-block" ng-show="contact.showForm">
-          <form name="form" novalidate ng-submit="vm.addTel(contact, tel)">
-            <div class="form-group">
-              <select class="form-control" ng-model="tel.mode" required>
-                <option value="">نوع</option>
-                <option value="home">منزل</option>
-                <option value="briefcase">کار</option>
-                <option value="mobile">همراه</option>
-                <option value="building">دفتر</option>
-                <option value="fax">فکس</option>
-                <option value="phone">تلفن</option>
-              </select>
-              <input type="text" class="form-control ltr" ng-model="tel.num" required ng-minlength="5">
-            </div>
-            <button class="btn btn-sm btn-primary btn-block" ng-disabled="form.$invalid">اضافه</button>
-          </form>
-        </div>
-        <div class="card-block">
-          <p ng-bind-html="vm.highlight(contact.email, vm.query)"></p>
-          <p class="text-muted text-justify" ng-bind-html="vm.highlight(contact.info, vm.query)"></p>
-          <address class="text-justify" ng-bind-html="vm.highlight(contact.address, vm.query)"></address>
-        </div>
-        <div class="card-footer">
-          <span confirm-btn click-func="vm.remove(contact._id)"></span>
-          <a ui-sref="contacts.new({id: contact._id})" class="btn btn-info btn-sm">ویرایش</a>
-          <button class="btn btn-info btn-sm" ng-click="contact.showForm = !contact.showForm">
-            تماس
-            <span class="fa fa-plus"></span>
-          </button>
-        </div>
-      </div>
-    </div>
+    <ul class="nav nav-pills p-b-2 hidden-print">
+      <li class="nav-item">
+        <a class="nav-link" ui-sref="contacts.column" ui-sref-active="active">
+          <span class="fa fa-columns"></span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" ui-sref="contacts.list" ui-sref-active="active">
+          <span class="fa fa-list"></span>
+        </a>
+      </li>
+    </ul>
+
+    <div ui-view></div>
   </div>
 </div>

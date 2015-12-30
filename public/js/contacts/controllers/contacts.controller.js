@@ -4,9 +4,10 @@
     .module('app.routes.contacts')
     .controller('ContactsController', ContactsController);
 
-  ContactsController.$inject = ['contact', 'message', 'letters', '$sce', '$timeout'];
+  ContactsController.$inject = ['contact', 'message', 'letters', '$sce', '$timeout', '$scope'];
 
-  function ContactsController(contact, message, letters, $sce, $timeout) {
+  function ContactsController(contact, message, letters, $sce, $timeout, $scope) {
+    console.log($scope);
     var vm = this;
     vm.letters = letters;
     vm.message = message;
@@ -43,6 +44,7 @@
     }
 
     function highlight(text, search) {
+      var search = $scope.vm.query || $scope.$parent.vm.query;
       if (!search) {
         return $sce.trustAsHtml(text);
       }

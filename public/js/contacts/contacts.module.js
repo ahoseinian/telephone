@@ -26,6 +26,18 @@
           }]
         }
       })
+      .state('contacts.list', {
+        url: "/contacts/list",
+        templateUrl: "/js/contacts/templates/list.html",
+        controller: 'ContactsController as vm',
+      })
+      .state('contacts.column', {
+        url: "/contacts/column",
+        templateUrl: "/js/contacts/templates/column.html",
+        controller: 'ContactsController as vm',
+      })
+
+
 
     .state('contacts.new', {
       url: "/new/:id",

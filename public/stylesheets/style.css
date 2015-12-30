@@ -126,3 +126,11 @@ body {
 .hover-pointer {
   cursor: pointer;
 }
+
+.hover-pointer:hover {
+  color: blue;
+}
+
+.list-inline-item {
+  margin-right: 5px;
+}

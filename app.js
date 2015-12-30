@@ -41,7 +41,7 @@ app.use(cookieParser());
 
 
 app.use(require('./routes'));
-app.use('/salar', require('./lib/salar/app'));
+// app.use('/salar', require('./lib/salar/app'));
 
 
 // catch 404 and forward to error handler

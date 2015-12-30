@@ -27,12 +27,12 @@
         }
       })
       .state('contacts.list', {
-        url: "/contacts/list",
+        url: "/list",
         templateUrl: "/js/contacts/templates/list.html",
         controller: 'ContactsController as vm',
       })
       .state('contacts.column', {
-        url: "/contacts/column",
+        url: "/column",
         templateUrl: "/js/contacts/templates/column.html",
         controller: 'ContactsController as vm',
       })

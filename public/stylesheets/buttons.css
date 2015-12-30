@@ -107,7 +107,8 @@
   background: url(/images/buttons/e4.png);
 }
 
-.panel-card ul footer li a:hover {
+.panel-card ul footer li a:hover,
+.panel-card ul li a:hover {
   background-position: 0 -48px;
 }
 

@@ -4,10 +4,11 @@
     .module('app.routes.contacts')
     .controller('ContactsController', ContactsController);
 
-  ContactsController.$inject = ['contact', 'message', '$sce', '$timeout'];
+  ContactsController.$inject = ['contact', 'message', 'letters', '$sce', '$timeout'];
 
-  function ContactsController(contact, message, $sce, $timeout) {
+  function ContactsController(contact, message, letters, $sce, $timeout) {
     var vm = this;
+    vm.letters = letters;
     vm.message = message;
     vm.contacts = contact.contacts;
 
@@ -29,14 +30,16 @@
       contact.removeTel(ct, tel);
     }
 
-    function search() {
-      var tempQuery = vm.query;
+    function search(query, isLetter) {
+      if(isLetter){
+        return contact.search(query, isLetter);
+      }
+      var tempQuery = query;
       $timeout(function () {
         if (tempQuery == vm.query) {
-          if (vm.query.length !== 1) contact.search(vm.query);
+          contact.search(query);
         }
-      }, 1000);
-
+      }, 500);
     }
 
     function highlight(text, search) {

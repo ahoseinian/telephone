@@ -3,16 +3,30 @@ extends layout
 block content
   nav.navbar.navbar-light.bg-faded.m-b-1
     .navbar-brand 
-      a.nav-link(href='/', ui-sref-active="active") دفترچه تلفن
+      a.nav-link(ui-sref='contacts', ui-sref-active="active") 
+        span.fa.fa-list
+        span.p-r-s-1 دفترچه تلفن
     ul.nav.navbar-nav
       li.nav-item
-        a.nav-link(ui-sref='contacts', ui-sref-active="active") مخاطبین
+        a.nav-link(ui-sref='contacts', ui-sref-active="active") 
+          span.fa.fa-users
+          span.p-r-s-1 مخاطبین
       li.nav-item
-        a.nav-link(ui-sref='messages', ui-sref-active="active") ارسال پیام
+        a.nav-link(ui-sref='messages', ui-sref-active="active") 
+          span.fa.fa-paper-plane-o
+          span.p-r-s-1 ارسال پیام
       li.nav-item
-        a.nav-link(ui-sref='delivery', ui-sref-active="active") پیگیری پیام
+        a.nav-link(ui-sref='delivery', ui-sref-active="active") 
+          span.fa.fa-calendar-check-o      
+          span.p-r-s-1 پیگیری پیام
       li.nav-item
-        a.nav-link(href='/auth/logout', ui-sref-active="active") خروج
+        a.nav-link(href='/')
+          span.fa.fa-home
+          span بازگشت
+      li.nav-item
+        a.nav-link(href='/auth/logout', ui-sref-active="active") 
+          span.fa.fa-sign-out      
+          span.p-r-s-1 خروج
 
   span(ng-init= "user= "+JSON.stringify(user))
   <div ui-view></div>

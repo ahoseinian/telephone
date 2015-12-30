@@ -55,8 +55,10 @@
       });
     };
 
-    function search(query) {
-      return $http.get('/api/contacts/search', {
+    function search(query, isLetter) {
+      console.log(query);
+      var url = isLetter ? '/api/contacts/search/letter' : '/api/contacts/search/';
+      return $http.get(url, {
         params: {
           q: query
         }

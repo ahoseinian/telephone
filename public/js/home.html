@@ -13,11 +13,26 @@
         </div>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"> سیستم عامل: {{vm.nav.platform}}</li>
-        <li class="list-group-item">مرور گر: {{vm.getBrowser()}}</li>
-        <li class="list-group-item">آدرس: {{ip}}</li>
-        <li class="list-group-item">نسخه: v2.0.2</li>
-        <li class="list-group-item">تاریخ: {{vm.date | date}}</li>
+        <li class="list-group-item">
+          <strong> سیستم عامل: </strong>
+          <span class="pull-xs-left"> {{vm.nav.platform}} </span>
+        </li>
+        <li class="list-group-item">
+          <strong>مرور گر:</strong>
+          <span class="pull-xs-left">{{vm.getBrowser()}}</span>
+        </li>
+        <li class="list-group-item">
+          <strong>آدرس:</strong>
+          <span class="pull-xs-left">{{ip}}</span>
+        </li>
+        <li class="list-group-item">
+          <strong>نسخه:</strong>
+          <span class="pull-xs-left">v2.0.2</span>
+        </li>
+        <li class="list-group-item">
+          <strong>تاریخ:</strong>
+          <span class="pull-xs-left">{{vm.date | date}}</span>
+        </li>
       </ul>
       <div class="login-btn">
         <button type="submit"></button>
@@ -90,8 +105,8 @@
         <li class="disabled">
           <a href="#"></a>
         </li>
-        <li class="disabled">
-          <a href="#"></a>
+        <li>
+          <a href="/auth/logout"></a>
         </li>
       </footer>
     </ul>

@@ -11,6 +11,10 @@ body {
   font-family: yekan-web, tahoma;
 }
 
+.p-r-s-1 {
+  padding-right: 0.3rem;
+}
+
 .form-control {
   padding: .1rem .75rem;
   line-height: 2;
@@ -18,17 +22,13 @@ body {
 
 .absolute-left {
   position: absolute;
-  left: -5px;
+  left: 0;
 }
 
-.card-columns {
-  -webkit-column-count: 4;
-  -moz-column-count: 4;
-  column-count: 4;
-}
-.card{
+.card {
   overflow: visible;
 }
+
 .card img {
   width: 100%;
 }
@@ -79,10 +79,10 @@ body {
   z-index: 9999;
   background: black;
   padding: 1rem;
-  color:white;
+  color: white;
   font-size: 2rem;
-  left:0;
-  top:0;
+  left: 0;
+  top: 0;
   cursor: pointer;
 }
 
@@ -121,4 +121,8 @@ body {
   width: 237px;
   border: none;
   margin: 20px -8px 10px;
+}
+
+.hover-pointer {
+  cursor: pointer;
 }

@@ -31,7 +31,7 @@
     }
 
     function search(query, isLetter) {
-      if(isLetter){
+      if (isLetter) {
         return contact.search(query, isLetter);
       }
       var tempQuery = query;

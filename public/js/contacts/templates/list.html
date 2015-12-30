@@ -1,19 +1,21 @@
 <table class="table table-sm">
-	<thead>
-		<tr>
-			<th>نام</th>
-			<th>شماره ها</th>
-			<th>پست الکترونیک</th>
-			<th>اطلاعات</th>
-			<th>آدرس</th>
-		</tr>
-	</thead>
+  <thead>
+    <tr>
+      <th  width="100" >نام</th>
+      <th  width="100" >
+        <span class="p-r-1">شماره ها</span>
+      </th>
+      <th>پست الکترونیک</th>
+      <th>اطلاعات</th>
+      <th>آدرس</th>
+    </tr>
+  </thead>
   <tr ng-repeat="contact in vm.contacts">
-    <td width="100" ng-bind-html="vm.highlight(contact.name, vm.query)"></td>
+    <td ng-bind-html="vm.highlight(contact.name, vm.query)"></td>
     <td>
       <ul class="list-inline">
         <li class="list-inline-item" ng-repeat="phone in contact.phones">
-          <span class="hover-pointer" ng-bind-html="vm.highlight(phone.num, vm.query)" ng-click="vm.message.addTel(phone.num)"></span>
+          <span class="btn btn-link" ng-bind-html="vm.highlight(phone.num, vm.query)" ng-click="vm.message.addTel(phone.num)"></span>
         </li>
       </ul>
     </td>
@@ -25,8 +27,8 @@
     </td>
     <td>
       <small>
-      	<address class="text-justify" ng-bind-html="vm.highlight(contact.address, vm.query)"></address>
-    	</small>
+        <address class="text-justify" ng-bind-html="vm.highlight(contact.address, vm.query)"></address>
+      </small>
     </td>
   </tr>
 </table>

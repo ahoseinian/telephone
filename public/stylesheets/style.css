@@ -123,14 +123,20 @@ body {
   margin: 20px -8px 10px;
 }
 
-.hover-pointer {
-  cursor: pointer;
-}
-
-.hover-pointer:hover {
-  color: blue;
+.list-inline {
+  padding: 0;
 }
 
 .list-inline-item {
   margin-right: 5px;
+}
+
+.letter-list {
+  list-style: none;
+  padding: 0;
+  width: 40px;
+}
+
+.letter-list li {
+  margin-top: 4px;
 }

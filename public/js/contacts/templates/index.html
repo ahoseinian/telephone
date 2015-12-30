@@ -1,6 +1,9 @@
 <div class="hidden-print">
 
-  <button class="btn btn-primary absolute-left btn-sm" ui-sref="contacts.new({id: null})">new</button>
+  <button class="btn btn-primary absolute-left btn-sm" ui-sref="contacts.new({id: null})">
+    <span>جدید</span>
+    <span class="fa fa-plus"></span>
+  </button>
   <div>
     <form class="search-form" name="searchForm" novalidate>
       <input type="text" class="form-control" ng-model="vm.query" placeholder="جستجو" ng-change="vm.search(vm.query)">
@@ -11,8 +14,8 @@
 <div class="row">
   <div class="col-xs-1 hidden-print">
     <ul class="letter-list">
-      <li ng-repeat="letter in vm.letters" ng-click="vm.search(letter, true)" class="hover-pointer">
-        <strong>{{letter}}</strong>
+      <li ng-repeat="letter in vm.letters" ng-click="vm.search(letter, true);vm.letterSelected=letter">
+        <button class="btn btn-sm btn-block" ng-class="{'btn-info': letter == vm.letterSelected}">{{letter}}</button>
       </li>
     </ul>
   </div>

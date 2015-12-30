@@ -1,16 +1,3 @@
-<div class="hidden-print">
-
-  <button class="btn btn-primary absolute-left btn-sm" ui-sref="contacts.new({id: null})">
-    <span>جدید</span>
-    <span class="fa fa-plus"></span>
-  </button>
-  <div>
-    <form class="search-form" name="searchForm" novalidate>
-      <input type="text" class="form-control" ng-model="vm.query" placeholder="جستجو" ng-change="vm.search(vm.query)">
-    </form>
-  </div>
-</div>
-
 <div class="row">
   <div class="col-xs-2 col-sm-1 hidden-print">
     <ul class="letter-list">
@@ -33,6 +20,15 @@
           <span class="fa fa-list"></span>
         </a>
       </li>
+      <li class="nav-item pull-xs-right">
+        <a class="nav-link" ui-sref="contacts.new({id: null})" ui-sref-active="active">
+          <span class="fa fa-plus"></span>
+        </a>
+      </li>
+      <form class="form-inline pull-xs-left m-l-1" name="searchForm" novalidate>
+        <input type="text" class="form-control" ng-model="vm.query" placeholder="جستجو" ng-change="vm.search(vm.query)">
+      </form>
+
     </ul>
 
     <div ui-view></div>

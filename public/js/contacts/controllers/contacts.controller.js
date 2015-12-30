@@ -7,7 +7,6 @@
   ContactsController.$inject = ['contact', 'message', 'letters', '$sce', '$timeout', '$scope'];
 
   function ContactsController(contact, message, letters, $sce, $timeout, $scope) {
-    console.log($scope);
     var vm = this;
     vm.letters = letters;
     vm.message = message;

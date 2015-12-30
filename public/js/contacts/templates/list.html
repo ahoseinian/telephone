@@ -1,34 +1,37 @@
-<table class="table table-sm">
-  <thead>
-    <tr>
-      <th  width="100" >نام</th>
-      <th  width="100" >
-        <span class="p-r-1">شماره ها</span>
-      </th>
-      <th>پست الکترونیک</th>
-      <th>اطلاعات</th>
-      <th>آدرس</th>
-    </tr>
-  </thead>
-  <tr ng-repeat="contact in vm.contacts">
-    <td ng-bind-html="vm.highlight(contact.name, vm.query)"></td>
-    <td>
-      <ul class="list-inline">
-        <li class="list-inline-item" ng-repeat="phone in contact.phones">
-          <span class="btn btn-link" ng-bind-html="vm.highlight(phone.num, vm.query)" ng-click="vm.message.addTel(phone.num)"></span>
-        </li>
-      </ul>
-    </td>
-    <td>
-      <p ng-bind-html="vm.highlight(contact.email, vm.query)"></p>
-    </td>
-    <td>
-      <small class="text-justify" ng-bind-html="vm.highlight(contact.info, vm.query)"></small>
-    </td>
-    <td>
-      <small>
+<div class="table-responsive">
+
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th width="100">نام</th>
+        <th width="100">
+          <span class="p-r-1">شماره ها</span>
+        </th>
+        <th>پست الکترونیک</th>
+        <th>اطلاعات</th>
+        <th>آدرس</th>
+      </tr>
+    </thead>
+    <tr ng-repeat="contact in vm.contacts">
+      <td ng-bind-html="vm.highlight(contact.name, vm.query)"></td>
+      <td>
+        <ul class="list-inline">
+          <li class="list-inline-item" ng-repeat="phone in contact.phones">
+            <span class="btn btn-link" ng-bind-html="vm.highlight(phone.num, vm.query)" ng-click="vm.message.addTel(phone.num)"></span>
+          </li>
+        </ul>
+      </td>
+      <td>
+        <p ng-bind-html="vm.highlight(contact.email, vm.query)"></p>
+      </td>
+      <td>
+        <small class="text-justify" ng-bind-html="vm.highlight(contact.info, vm.query)"></small>
+      </td>
+      <td>
+        <small>
         <address class="text-justify" ng-bind-html="vm.highlight(contact.address, vm.query)"></address>
       </small>
-    </td>
-  </tr>
-</table>
+      </td>
+    </tr>
+  </table>
+</div>

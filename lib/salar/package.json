@@ -1,33 +1,32 @@
 {
-  "name": "telephone",
+  "name": "amir",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "NODE_PATH=. node ./bin/www"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "assetmanager": "^1.2.2",
-    "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.13.2",
-    "compression": "^1.6.0",
     "connect-mongo": "^1.1.0",
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
     "express": "~4.13.1",
     "express-session": "^1.12.1",
-    "fast-csv": "^0.6.0",
     "grunt-contrib-cssmin": "^0.14.0",
     "grunt-contrib-uglify": "^0.11.0",
-    "grunt-contrib-watch": "^0.6.1",
     "jade": "~1.11.0",
+    "kerberos": "0.0.17",
+    "lwip": "0.0.8",
     "mongoose": "^4.2.9",
     "mongoose-paginate": "^5.0.0",
+    "mongoose-unique-validator": "^0.6.2",
     "morgan": "~1.6.1",
-    "node-csv": "^0.1.2",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
-    "serve-favicon": "~2.3.0",
-    "sqlite3": "^3.1.1",
-    "tether": "^1.1.1"
+    "passport-http": "^0.3.0",
+    "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-watch": "^0.6.1"
   }
 }

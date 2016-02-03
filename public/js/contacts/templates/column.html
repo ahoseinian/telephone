@@ -7,7 +7,7 @@
       <li class="list-group-item ltr text-xs-left" ng-repeat="phone in contact.phones">
         <span class="fa fa-{{phone.mode}}" style="width:15px"></span>
         <span class="hover-big" ng-bind-html="vm.highlight(phone.num, vm.query)" ng-click="vm.message.addTel(phone.num)"></span>
-        <span confirm-x-btn click-func="vm.removeTel(contact, phone)" ng-if="user.admin"></span>
+        <span confirm-x-btn click-func="vm.removeTel(contact, phone)"></span>
       </li>
     </ul>
     <div class="card-block" ng-show="contact.showForm">

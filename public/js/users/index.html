@@ -5,45 +5,76 @@
   </a>
 </nav>
 
-<form class="form-inline m-y-1" ng-submit="vm.service.save()" name="form" novalidate autocomplete="off">
+<form class="form-inline m-y-1" ng-submit="vm.curItem.$save()" name="form" novalidate autocomplete="off">
   <fieldset class="form-group">
-    <input type="text" ng-model="vm.service.current.username" class="form-control" placeholder="نام کاربری" required>
+    <input type="text" ng-model="vm.curItem.username" class="form-control" placeholder="نام کاربری" required>
   </fieldset>
   <fieldset class="form-group m-r-1">
-    <input type="password" ng-model="vm.service.current.password" class="form-control" required placeholder="رمز عبور">
+    <input type="password" ng-model="vm.curItem.password" class="form-control" required placeholder="رمز عبور">
     <input type="password" ng-model="pass2" class="form-control" required placeholder="تکرار رمز عبور">
   </fieldset>
   <fieldset class="form-group">
-    <input type="text" ng-model="vm.service.current.fullname" class="form-control" placeholder="نام و نام خانوادگی" required>
+    <input type="text" ng-model="vm.curItem.fullname" class="form-control" placeholder="نام و نام خانوادگی" required>
   </fieldset>
   <fieldset class="form-group m-x-1">
     <label for="">ادمین</label>
-    <input class="m-t-1" type="checkbox" ng-model="vm.service.current.admin">
+    <input class="m-t-1" type="checkbox" ng-model="vm.curItem.admin">
   </fieldset>
-  <button class="btn btn-primary" ng-disabled="form.$invalid || vm.service.current.password !== pass2">ذخیره</button>
+  <button class="btn btn-primary" ng-disabled="form.$invalid || vm.curItem.password !== pass2">ذخیره</button>
 </form>
-<table class="table">
-  <thead>
-    <tr>
-      <th>نام کاربری</th>
-      <th>نام</th>
-      <th>ادمین</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="usr in vm.service.items">
-      <td>{{usr.username}}</td>
-      <td>{{usr.fullname}}</td>
-      <td>
-        <span ng-if="usr.admin">ادمین</span>
-      </td>
-      <td>
-        <div ng-if="!usr.admin">
-          <button class="btn btn-primary" ng-click="vm.service.current = usr">ویرایش</button>
-          <button class="btn btn-danger" ng-click="vm.removeUser(usr._id)">حذف</button>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+
+<div class="card" ng-if="vm.pageAddUser">
+  <div class="card-header">
+    <h2>{{vm.pageAddUser.username}}</h2>
+  </div>
+  <div class="card-block">
+
+    <form novalidate ng-submit="vm.pageAddUser.$addPage(vm.newpage.name)" name="pageAddForm">
+      <fieldset class="form-group">
+        <select class="c-select" name="page" ng-options="page as page for page in vm.pages(vm.pageAddUser)" ng-model="vm.newpage.name" required>
+          <option value="">انتخاب صفحه</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary" ng-disabled="pageAddForm.$invalid">
+          <span class="fa fa-plus"></span>
+          <span>افزودن صفحه</span>
+        </button>
+      </fieldset>
+    </form>
+
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" ng-repeat="page in vm.pageAddUser.pages">{{page.name}}</li>
+  </ul>
+</div>
+
+<div class="table-responsive">
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>نام کاربری</th>
+        <th>نام</th>
+        <th>ادمین</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="usr in vm.items">
+        <td>{{usr.username}}</td>
+        <td>{{usr.fullname}}</td>
+        <td>
+          <span ng-if="usr.admin">ادمین</span>
+        </td>
+        <td>
+          <div ng-if="!usr.admin">
+            <button class="btn btn-sm btn-primary" ng-click="vm.curItem = usr">ویرایش</button>
+            <button class="btn btn-sm btn-danger" ng-click="usr.$remove()">حذف</button>
+            <button class="btn btn-sm btn-secondary" ng-click="vm.pageAddUser = usr">افزودن صفحه</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

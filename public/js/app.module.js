@@ -9,6 +9,7 @@
       'app.routes.contacts',
       'app.routes.messages',
       'angular-loading-bar',
+      'app.filters',
     ])
     .config(config)
     .controller('HomeController', HomeController);

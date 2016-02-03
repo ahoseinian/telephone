@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -8,13 +8,20 @@
   config.$inject = ['$stateProvider'];
 
   function config($stateProvider) {
-  	$stateProvider
-  		.state('users',{
-  			url:'/users',
-  			templateUrl: '/js/users/index.html',
-  			controller: 'UsersController',
-  			controllerAs: 'vm',
-  		});
-
+    $stateProvider
+      .state('users', {
+        url: '/users',
+        templateUrl: '/js/users/index.html',
+        controller: 'UsersController as vm',
+        resolve: {
+          userPrepService: userPrepService
+        },
+      });
   }
+
+  userPrepService.$inject = ['userService'];
+
+  function userPrepService(userService) {
+    return userService.query();
+  };
 })();

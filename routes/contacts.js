@@ -79,7 +79,7 @@ router.get('/', function (req, res, next) {
 router.get('/tavalod/today', function (req, res, next) {
   Contact
     .find({
-      tavalod: moment().format('jYYYY-jMM-jDD')
+      tavalod: new RegExp(moment().format('jMM-jDD')+'$', "i")
     })
     .exec(function (err, contacts) {
       if (err) {

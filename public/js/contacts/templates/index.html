@@ -7,14 +7,12 @@
     </ul>
   </div>
   <div class="col-xs-10 col-sm-11">
-
     <ul class="nav nav-pills p-b-2 hidden-print">
       <li class="nav-item">
         <a class="nav-link" ui-sref="contacts.column" ui-sref-active="active">
           <span class="fa fa-columns"></span>
         </a>
       </li>
-
       <li class="nav-item">
         <a class="nav-link" ui-sref="contacts.list" ui-sref-active="active">
           <span class="fa fa-list"></span>
@@ -28,12 +26,16 @@
           </span>
         </a>
       </li>
+      <li class="nav-item pull-xs-right" ng-if="vm.tavalods.length">
+        <a class="nav-link btn btn-primary" ng-click="vm.changeContact(vm.tavalods)">
+          متولدین امروز 
+          <span class="label label-pill label-success">{{vm.tavalods.length}}</span>
+        </a>
+      </li>
       <form class="form-inline pull-xs-left m-l-1" name="searchForm" novalidate>
         <input type="text" class="form-control" ng-model="vm.query" placeholder="جستجو" ng-change="vm.search(vm.query)">
       </form>
-
     </ul>
-
     <div ui-view></div>
   </div>
 </div>

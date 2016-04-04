@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
   angular
     .module('app.routes.contacts')
@@ -17,6 +17,11 @@
     vm.removeTel = removeTel;
     vm.search = search;
     vm.highlight = highlight;
+    vm.changeContact = changeContact;
+
+    contact.getTodaysTavalods().success(function(data) {
+      vm.tavalods = data;
+    });
 
     function remove(id) {
       contact.remove(id);
@@ -35,7 +40,7 @@
         return contact.search(query, isLetter);
       }
       var tempQuery = query;
-      $timeout(function () {
+      $timeout(function() {
         if (tempQuery == vm.query) {
           contact.search(query);
         }
@@ -50,6 +55,11 @@
       if (text) {
         return $sce.trustAsHtml(text.replace(new RegExp(search, 'gi'), '<mark>$&</mark>'));
       }
+    }
+
+    function changeContact(contacts) {
+      angular.copy(contacts, vm.contacts);
+      console.log(vm.contacts);
     }
   }
 })();

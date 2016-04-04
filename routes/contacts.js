@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var Contact = require('../models/contact');
+var moment = require('moment-jalaali');
+
 
 router.get('/search/letter', function (req, res, next) {
   var query = req.query.q;
@@ -65,6 +67,20 @@ router.get('/', function (req, res, next) {
   Contact
     .find()
     .limit(40)
+    .exec(function (err, contacts) {
+      if (err) {
+        next(err)
+      };
+      res.json(contacts);
+    });
+});
+
+/* GET contacts which are born today. */
+router.get('/tavalod/today', function (req, res, next) {
+  Contact
+    .find({
+      tavalod: moment().format('jYYYY-jMM-jDD')
+    })
     .exec(function (err, contacts) {
       if (err) {
         next(err)

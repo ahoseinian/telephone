@@ -22,6 +22,7 @@
     factory.remove = remove;
     factory.addTel = addTel;
     factory.removeTel = removeTel;
+    factory.getTodaysTavalods = getTodaysTavalods;
 
     return factory;
 
@@ -54,6 +55,10 @@
         angular.copy(data, factory.contacts);
       });
     };
+
+    function getTodaysTavalods(){
+      return $http.get('/api/contacts/tavalod/today'); 
+    }
 
     function search(query, isLetter) {
       var url = isLetter ? '/api/contacts/search/letter' : '/api/contacts/search/';

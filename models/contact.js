@@ -12,6 +12,7 @@ var ContactSchema = new mongoose.Schema({
   email: String,
   info: String,
   tavalod: String,
+  website: String,
 });
 ContactSchema.plugin(uniqueValidator);
 

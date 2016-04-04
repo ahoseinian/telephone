@@ -1,35 +1,49 @@
-<div class="card" ng-class="{'card-info': vm.contact._id}" >
-	<div class="card-block">
-		<h4 class="text-center card-title">{{vm.contact._id ? "ویرایش مخاطب -- ": "مخاطب جدید"}} {{vm.contact.name}}</h4>
-	</div>
-	<form ng-submit="vm.add()" novalidate name="form">
-		<div class="card-block">
-			<fieldset class="form-group">
-				<input class="form-control" placeholder="نام" ng-model="vm.contact.name" required>
-			</fieldset>
-
-			<fieldset class="form-group">
-				<textarea class="form-control" placeholder="آدرس" rows="3" ng-model="vm.contact.address" ></textarea>
-			</fieldset>
-
-			<fieldset class="form-group">
-				<input type="email" class="form-control" placeholder="ایمیل" ng-model="vm.contact.email" >
-			</fieldset>
-
-			<fieldset class="form-group">
-				<textarea class="form-control" placeholder="اطلاعات" rows="3" ng-model="vm.contact.info" ></textarea>
-			</fieldset>
-
-		</div>
-		<div class="card-footer">
-			<div class="row">
-				<div class="col-xs-6">
-					<button type="submit" class="btn btn-primary btn-sm btn-block" ng-disabled="form.$invalid">ذخیره</button>
-				</div>
-				<div class="col-xs-6">
-					<a ui-sref="contacts" class="btn btn-sm btn-secondary btn-block"> انصراف </a>
-				</div>
-			</div>
-		</div>
-	</form>
+<link rel="stylesheet" href="/stylesheets/persian.datepicker.min.css" />
+<script src="js/persian.date.js"></script>
+<script src="/js/persian.datepicker.min.js"></script>
+<div class="card" ng-class="{'card-info': vm.contact._id}">
+    <div class="card-block">
+        <h4 class="text-center card-title">{{vm.contact._id ? "ویرایش مخاطب -- ": "مخاطب جدید"}} {{vm.contact.name}}</h4>
+    </div>
+    <form ng-submit="vm.add()" novalidate name="form">
+        <div class="card-block">
+            <fieldset class="form-group">
+                <input class="form-control" placeholder="نام" ng-model="vm.contact.name" required>
+            </fieldset>
+            <fieldset class="form-group">
+                <textarea class="form-control" placeholder="آدرس" rows="3" ng-model="vm.contact.address"></textarea>
+            </fieldset>
+            <fieldset class="form-group">
+                <input type="email" class="form-control" placeholder="ایمیل" ng-model="vm.contact.email">
+            </fieldset>
+            <fieldset class="form-group">
+                <textarea class="form-control" placeholder="اطلاعات" rows="3" ng-model="vm.contact.info"></textarea>
+            </fieldset>
+            <fieldset class="form-group">
+                <input type="text" class="form-control" placeholder="شرکت" ng-model="vm.contact.company">
+            </fieldset>
+            <fieldset class="form-group">
+                <input type="text" class="form-control" placeholder="وب سایت" ng-model="vm.contact.website">
+            </fieldset>
+            <fieldset class="form-group">
+                <input type="text" class="form-control date-input" placeholder="تاریخ تولد / تاسیس" ng-model="vm.contact.tavalod">
+            </fieldset>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-xs-6">
+                    <button type="submit" class="btn btn-primary btn-sm btn-block" ng-disabled="form.$invalid">ذخیره</button>
+                </div>
+                <div class="col-xs-6">
+                    <a ui-sref="contacts" class="btn btn-sm btn-secondary btn-block"> انصراف </a>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".date-input").pDatepicker({format:'YYYY-MM-DD'});
+});
+</script>

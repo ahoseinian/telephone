@@ -59,7 +59,6 @@
 
     function changeContact(contacts) {
       angular.copy(contacts, vm.contacts);
-      console.log(vm.contacts);
     }
   }
 })();

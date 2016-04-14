@@ -4,7 +4,7 @@ var Contact = require('../models/contact');
 var moment = require('moment-jalaali');
 
 
-router.get('/search/letter', function (req, res, next) {
+router.get('/search/letter', function(req, res, next) {
   var query = req.query.q;
   if (query == "#")
     query = "(0|1|2|3|4|5|6|7|8|9)";
@@ -12,7 +12,7 @@ router.get('/search/letter', function (req, res, next) {
     name: {
       $regex: "^" + query
     }
-  }).exec(function (err, contacts) {
+  }).exec(function(err, contacts) {
     if (err) next(err);
     res.json(contacts);
   });
@@ -20,10 +20,12 @@ router.get('/search/letter', function (req, res, next) {
 });
 
 
-router.get('/search', function (req, res, next) {
+router.get('/search', function(req, res, next) {
   var qry = req.query;
-  Contact
-    .find({
+  var contactQuery = Contact.find();
+  if (qry.q) {
+
+    contactQuery.find({
       $or: [{
         name: {
           $regex: '.*' + qry.q + '.*'
@@ -52,36 +54,46 @@ router.get('/search', function (req, res, next) {
         tavalod: {
           $regex: '.*' + qry.q + '.*'
         }
+      }, {
+        'group.name': {
+          $regex: '.*' + qry.q + '.*'
+        }
       }, ]
     })
-    .limit(40)
-    .exec(function (err, contacts) {
-      if (err) next(err);
+  }
+
+  if (qry.group) {
+    contactQuery.where('group').equals(qry.group);
+  }
+  contactQuery.populate('group').limit(40)
+    .exec(function(err, contacts) {
+      if (err) return next(err);
       res.json(contacts);
     });
 });
 
 
 /* GET contacts listing. */
-router.get('/', function (req, res, next) {
+router.get('/', function(req, res, next) {
   Contact
     .find()
     .limit(40)
-    .exec(function (err, contacts) {
+    .populate('group')
+    .exec(function(err, contacts) {
       if (err) {
-        next(err)
+        return next(err)
       };
       res.json(contacts);
     });
 });
 
 /* GET contacts which are born today. */
-router.get('/tavalod/today', function (req, res, next) {
+router.get('/tavalod/today', function(req, res, next) {
   Contact
     .find({
-      tavalod: new RegExp(moment().format('jMM-jDD')+'$', "i")
+      tavalod: new RegExp(moment().format('jMM-jDD') + '$', "i")
     })
-    .exec(function (err, contacts) {
+    .exec(function(err, contacts) {
       if (err) {
         next(err)
       };
@@ -90,10 +102,10 @@ router.get('/tavalod/today', function (req, res, next) {
 });
 
 
-router.post('/', function (req, res, next) {
+router.post('/', function(req, res, next) {
   var contact = new Contact(req.body);
 
-  contact.save(function (err, contact) {
+  contact.save(function(err, contact) {
     if (err) {
       return next(err);
     }
@@ -101,10 +113,10 @@ router.post('/', function (req, res, next) {
   });
 });
 
-router.delete('/:id', function (req, res, next) {
+router.delete('/:id', function(req, res, next) {
   Contact.remove({
     _id: req.params.id
-  }, function (err, removed) {
+  }, function(err, removed) {
     if (err) {
       next(err);
     }
@@ -112,10 +124,10 @@ router.delete('/:id', function (req, res, next) {
   })
 });
 
-router.put('/:id', function (req, res, next) {
+router.put('/:id', function(req, res, next) {
   Contact.update({
     _id: req.params.id
-  }, req.body, function (err, user) {
+  }, req.body, function(err, user) {
     if (err) {
       return next(err);
     }
@@ -123,19 +135,19 @@ router.put('/:id', function (req, res, next) {
   });
 });
 
-router.post('/:id/tels', function (req, res, next) {
-  Contact.findById(req.params.id, function (err, contact) {
+router.post('/:id/tels', function(req, res, next) {
+  Contact.findById(req.params.id, function(err, contact) {
     contact.phones.push(req.body);
-    contact.save(function (err, contact) {
+    contact.save(function(err, contact) {
       res.json(contact);
     });
   });
 });
 
-router.delete('/:id/tels/:telId', function (req, res, next) {
-  Contact.findById(req.params.id, function (err, contact) {
+router.delete('/:id/tels/:telId', function(req, res, next) {
+  Contact.findById(req.params.id, function(err, contact) {
     contact.phones.id(req.params.telId).remove();
-    contact.save(function (err, contact) {
+    contact.save(function(err, contact) {
       res.json(contact);
     });
   });

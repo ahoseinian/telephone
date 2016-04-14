@@ -34,6 +34,9 @@
       </li>
       <form class="form-inline pull-xs-left m-l-1" name="searchForm" novalidate>
         <input type="text" class="form-control" ng-model="vm.query" placeholder="جستجو" ng-change="vm.search(vm.query)">
+        <select ng-model="vm.group" ng-options="group._id as group.name for group in vm.groups" class="form-control" ng-change="vm.search(vm.query)">
+          <option value="">همه</option>
+        </select>
       </form>
     </ul>
     <div ui-view></div>

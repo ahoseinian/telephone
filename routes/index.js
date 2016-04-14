@@ -4,6 +4,7 @@ var router = express.Router();
 router.use('/auth', require('./auth'));
 router.use('/api/contacts', isLoggedIn, require('./contacts'));
 router.use('/api/messages', isLoggedIn, require('./messages'));
+router.use('/api/settings', isLoggedIn, require('./setting'));
 router.use('/api/users', isLoggedIn, isAdmin, require('./users'));
 /* GET home page. */
 router.get('/', function (req, res, next) {

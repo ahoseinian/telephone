@@ -28,6 +28,9 @@
             <fieldset class="form-group">
                 <input type="text" class="form-control date-input" placeholder="تاریخ تولد / تاسیس" ng-model="vm.contact.tavalod">
             </fieldset>
+            <fieldset class="form-group">
+                <select ng-model="vm.contact.group" ng-options="group._id as group.name for group in vm.groups" class="form-control"></select>
+            </fieldset>
         </div>
         <div class="card-footer">
             <div class="row">

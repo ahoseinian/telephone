@@ -60,11 +60,12 @@
       return $http.get('/api/contacts/tavalod/today'); 
     }
 
-    function search(query, isLetter) {
+    function search(query, isLetter, group) {
       var url = isLetter ? '/api/contacts/search/letter' : '/api/contacts/search/';
       return $http.get(url, {
         params: {
-          q: query
+          q: query,
+          group: group
         }
       }).success(function (data) {
         angular.copy(data, factory.contacts);

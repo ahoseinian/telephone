@@ -1,8 +1,9 @@
-(function () {
+(function() {
   'use strict';
-  var letters = ['#', 
-  'آ', 'ا', 'ب', 'پ', 'ت', 'ث', 'ج', 'چ', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'ژ', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ک', 'گ', 'ل', 'م', 'ن', 'و', 'ه', 'ی',
-  'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  var letters = ['#',
+    'آ', 'ا', 'ب', 'پ', 'ت', 'ث', 'ج', 'چ', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'ژ', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ک', 'گ', 'ل', 'م', 'ن', 'و', 'ه', 'ی',
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+  ];
 
 
 
@@ -21,8 +22,11 @@
         controller: 'ContactsController',
         controllerAs: 'vm',
         resolve: {
-          contactsPromise: ['contact', function (contact) {
+          contactsPromise: ['contact', function(contact) {
             return contact.getAll();
+          }],
+          settingPromise: ['settingService', function(settingService) {
+            return settingService.query();
           }]
         }
       })
@@ -44,6 +48,11 @@
       templateUrl: "/js/contacts/templates/new.html",
       controller: 'ContactsNewController',
       controllerAs: 'vm',
+      resolve: {
+        contactsPromise: ['settingService', function(settingService) {
+          return settingService.query();
+        }]
+      }
     })
   }
 

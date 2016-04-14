@@ -39,6 +39,10 @@
         <span class="fa fa-calendar"></span>
         <span ng-bind-html="vm.highlight(contact.tavalod, vm.query)"></span>
       </p>
+      <p ng-show="contact.group.name">
+        <span class="fa fa-users"></span>
+        <span ng-bind-html="vm.highlight(contact.group.name, vm.query)"></span>
+      </p>
     </div>
     <div class="card-footer hidden-print">
       <span confirm-btn click-func="vm.remove(contact._id)"></span>

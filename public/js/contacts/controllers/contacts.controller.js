@@ -4,13 +4,14 @@
     .module('app.routes.contacts')
     .controller('ContactsController', ContactsController);
 
-  ContactsController.$inject = ['contact', 'message', 'letters', '$sce', '$timeout', '$scope'];
+  ContactsController.$inject = ['contact', 'message', 'letters', '$sce', '$timeout', '$scope', 'settingService'];
 
-  function ContactsController(contact, message, letters, $sce, $timeout, $scope) {
+  function ContactsController(contact, message, letters, $sce, $timeout, $scope, settingService) {
     var vm = this;
     vm.letters = letters;
     vm.message = message;
     vm.contacts = contact.contacts;
+    vm.groups = settingService.items;
 
     vm.remove = remove;
     vm.addTel = addTel;
@@ -42,7 +43,7 @@
       var tempQuery = query;
       $timeout(function() {
         if (tempQuery == vm.query) {
-          contact.search(query);
+          contact.search(query, false, vm.group);
         }
       }, 500);
     }

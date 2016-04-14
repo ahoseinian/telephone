@@ -6,6 +6,7 @@
       'app.common',
       'app.directives',
       'app.users',
+      'app.setting',
       'app.routes.contacts',
       'app.routes.messages',
       'angular-loading-bar',

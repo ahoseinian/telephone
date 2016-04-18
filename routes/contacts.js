@@ -22,7 +22,7 @@ router.get('/search/letter', function(req, res, next) {
 
 router.get('/search', function(req, res, next) {
   var qry = req.query;
-  var contactQuery = Contact.find();
+  var contactQuery = Contact.find().limit(100).sort('name');
   if (qry.q) {
 
     contactQuery.find({
@@ -63,9 +63,14 @@ router.get('/search', function(req, res, next) {
   }
 
   if (qry.group) {
-    contactQuery.where('group').equals(qry.group);
+    if (qry.group == 'notSet') {
+      contactQuery.where('group').exists(false).limit(10000);
+    } else {
+
+      contactQuery.where('group').equals(qry.group);
+    }
   }
-  contactQuery.populate('group').limit(40)
+  contactQuery.populate('group')
     .exec(function(err, contacts) {
       if (err) return next(err);
       res.json(contacts);

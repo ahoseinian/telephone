@@ -38,6 +38,7 @@
       Group: new Group(),
       items: [],
       query: query,
+      GroupObj: Group
     }
 
     return ftry;

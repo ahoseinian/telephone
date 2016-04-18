@@ -12,7 +12,8 @@
     vm.message = message;
     vm.contacts = contact.contacts;
     vm.groups = settingService.items;
-
+    vm.groups.push(new settingService.GroupObj({_id:'notSet', name: 'فاقد گروه'}));
+    console.log(vm.groups);
     vm.remove = remove;
     vm.addTel = addTel;
     vm.removeTel = removeTel;
